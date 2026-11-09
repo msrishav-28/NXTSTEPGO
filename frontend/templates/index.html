@@ -6,102 +6,118 @@
     <title>Next Step | Career Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="../style/styles.css">
+    <link rel="stylesheet" href="/style/styles.css">
 </head>
 <body class="bg-slate-50 text-slate-900 selection:bg-blue-600 selection:text-white hero-gradient">
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 bg-transparent py-6">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 bg-white/90 backdrop-blur-md border-b border-slate-100 py-4 shadow-sm">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3 group text-left brand-logo">
+            <a href="/" class="flex items-center gap-3 group text-left brand-logo">
                 <div class="brand-icon-wrapper">
                     <div class="bg-blue-600 p-2.5 rounded-xl text-white shadow-lg shadow-blue-200 brand-icon">
                         <i data-lucide="graduation-cap"></i>
                     </div>
                 </div>
                 <div class="flex flex-col leading-tight">
-                    <span class="brand-text">NxtStepGo</span>
-                    <span class="brand-subtitle">Career Hub</span>
+                    <span class="brand-text font-black text-xl text-slate-900">NxtStepGo</span>
+                    <span class="brand-subtitle text-xs text-blue-600 font-semibold tracking-wide">Career Hub</span>
                 </div>
             </a>
+            
+            <!-- Auth Buttons: Shown when logged out -->
             <div id="auth-buttons" class="flex items-center gap-3">
-                <a href="../login.html" class="text-blue-600 px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-50 transition-all">Login</a>
-                <a href="../signup.html" class="bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all">Sign Up</a>
+                <a href="/login.html" class="text-slate-700 px-5 py-2.5 rounded-full text-sm font-bold hover:bg-slate-100 transition-all">Login</a>
+                <a href="/signup.html" class="bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all">Sign Up</a>
             </div>
+
+            <!-- User Menu: Shown when logged in -->
             <div id="user-section" class="flex items-center gap-4" style="display: none;">
-                <a href="departments.html" class="bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all">Explore</a>
+                <a href="/departments.html" class="bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all">Explore</a>
                 <div class="relative group">
-                    <button id="user-menu-btn" class="flex items-center gap-2 text-slate-600 font-bold hover:text-blue-600 transition-colors">
-                        <i data-lucide="user" class="w-5 h-5"></i>
-                        <span id="user-name"></span>
+                    <button id="user-menu-btn" class="flex items-center gap-2 text-slate-700 font-bold hover:text-blue-600 transition-colors px-3 py-2 rounded-xl hover:bg-slate-50">
+                        <i data-lucide="user" class="w-5 h-5 text-blue-600"></i>
+                        <span id="user-name">Student</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400"></i>
                     </button>
-                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                        <a href="collections.html" class="block px-6 py-3 text-slate-700 hover:bg-blue-50 rounded-t-2xl font-semibold text-sm">My Collections</a>
-                        <a href="bookmarks.html" class="block px-6 py-3 text-slate-700 hover:bg-blue-50 font-semibold text-sm">Bookmarks</a>
-                        <button id="logout-btn" class="w-full text-left px-6 py-3 text-red-600 hover:bg-red-50 rounded-b-2xl font-semibold text-sm">Logout</button>
+                    <div class="absolute right-0 mt-2 w-52 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all py-2 z-50">
+                        <a href="/collections.html" class="block px-6 py-2.5 text-slate-700 hover:bg-blue-50 font-semibold text-sm">
+                            <i data-lucide="inbox" class="w-4 h-4 inline mr-2 text-blue-600"></i>My Collections
+                        </a>
+                        <a href="/bookmarks.html" class="block px-6 py-2.5 text-slate-700 hover:bg-blue-50 font-semibold text-sm">
+                            <i data-lucide="bookmark" class="w-4 h-4 inline mr-2 text-blue-600"></i>Bookmarks
+                        </a>
+                        <div class="border-t border-slate-100 my-1"></div>
+                        <button id="logout-btn" class="w-full text-left px-6 py-2.5 text-red-600 hover:bg-red-50 font-semibold text-sm">
+                            <i data-lucide="log-out" class="w-4 h-4 inline mr-2"></i>Logout
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="animate-in pt-44 pb-24 px-6 text-center min-h-screen">
+    <main class="animate-in pt-40 pb-24 px-6 text-center min-h-screen">
         <div class="max-w-5xl mx-auto">
             <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-8 border border-blue-100 shadow-sm stagger-1 opacity-0" style="animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;">
                 <i data-lucide="zap" class="w-3.5 h-3.5 fill-blue-600 icon-bounce"></i> Career Intelligence Hub
             </div>
             <h1 class="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-[1.1] mb-8 text-balance stagger-2 opacity-0" style="animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;">
-                Your journey to a better career starts <span class="text-gradient">here.</span>
+                Your journey to a better career starts <span class="text-gradient text-blue-600">here.</span>
             </h1>
             <p class="text-xl text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto mb-12 text-balance stagger-3 opacity-0" style="animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;">
                 Helping students find the right path after college. Explore higher studies, find the best job roles for your skills, or learn how to start your own business.
             </p>
-            <!-- CTA Button - Hidden until login -->
-            <a id="explore-btn" href="departments.html" class="inline-flex w-full sm:w-auto bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all items-center justify-center gap-3 btn-primary stagger-4 opacity-0" style="animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; display: none;">
-                Explore Branches <i data-lucide="chevron-right" class="group-hover:translate-x-2 transition-transform"></i>
-            </a>
-            <!-- Login Prompt - Shows before login -->
-            <a id="login-prompt" href="../login.html" class="inline-flex w-full sm:w-auto bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all items-center justify-center gap-3 btn-primary stagger-4 opacity-0" style="animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;">
-                Login to Explore <i data-lucide="lock" class="group-hover:translate-x-2 transition-transform"></i>
-            </a>
+            
+            <!-- Open CTA Buttons: Immediately accessible to all visitors -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 stagger-4 opacity-0" style="animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;">
+                <a id="explore-btn" href="/departments.html" class="inline-flex w-full sm:w-auto bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all items-center justify-center gap-3 btn-primary">
+                    Explore Branches <i data-lucide="chevron-right" class="group-hover:translate-x-2 transition-transform"></i>
+                </a>
+                <a id="skill-matcher-btn" href="/skill-matcher.html" class="inline-flex w-full sm:w-auto bg-white text-slate-800 border-2 border-slate-200 px-8 py-5 rounded-2xl font-bold text-lg hover:border-blue-600 hover:text-blue-600 hover:-translate-y-1 transition-all items-center justify-center gap-2 shadow-sm">
+                    <i data-lucide="zap" class="text-blue-600 w-5 h-5"></i> AI Skill Matcher
+                </a>
+            </div>
         </div>
     </main>
 
-    <script src="../script/data.js"></script>
+    <script src="/script/data.js"></script>
     <script>
         // Check if user is logged in
         function checkUserAuth() {
             const userId = localStorage.getItem('userId');
             const userName = localStorage.getItem('userName');
             
+            const authButtons = document.getElementById('auth-buttons');
+            const userSection = document.getElementById('user-section');
+            const userNameEl = document.getElementById('user-name');
+            
             if (userId) {
-                // User is logged in
-                document.getElementById('auth-buttons').style.display = 'none';
-                document.getElementById('user-section').style.display = 'flex';
-                document.getElementById('user-name').textContent = userName || 'User';
-                
-                // Show explore button, hide login prompt
-                document.getElementById('explore-btn').style.display = 'inline-flex';
-                document.getElementById('login-prompt').style.display = 'none';
+                if (authButtons) authButtons.style.display = 'none';
+                if (userSection) userSection.style.display = 'flex';
+                if (userNameEl) userNameEl.textContent = userName || 'Student';
             } else {
-                // User is not logged in
-                document.getElementById('auth-buttons').style.display = 'flex';
-                document.getElementById('user-section').style.display = 'none';
-                
-                // Show login prompt, hide explore button
-                document.getElementById('explore-btn').style.display = 'none';
-                document.getElementById('login-prompt').style.display = 'inline-flex';
+                if (authButtons) authButtons.style.display = 'flex';
+                if (userSection) userSection.style.display = 'none';
             }
         }
 
         // Logout handler
-        document.getElementById('logout-btn').addEventListener('click', function() {
-            localStorage.removeItem('userId');
-            localStorage.removeItem('userName');
-            window.location.href = 'index.html';
-        });
+        const logoutBtn = document.getElementById('logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('userId');
+                localStorage.removeItem('userName');
+                localStorage.removeItem('token');
+                window.location.href = '/';
+            });
+        }
 
-        // Initialize
+        // Initialize icons and state
         checkUserAuth();
-        initializePage();
+        if (typeof initializePage === 'function') {
+            initializePage();
+        } else if (window.lucide) {
+            window.lucide.createIcons();
+        }
     </script>
 </body>
 </html>
